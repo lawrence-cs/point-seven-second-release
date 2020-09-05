@@ -14,18 +14,6 @@
                         user-select: none; /* Non-prefixed version, currently
                                             supported by Chrome, Edge, Opera and Firefox */
             }
-            .btn {
-                background-color: purple;
-                border: none;
-                color: white;
-                padding: 50px 100px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                margin: auto;
-                display: block;
-            }
         </style>
     </head>
     <body>
@@ -40,7 +28,6 @@
                 <span id="shot-feedback" >Press Anywhere</span><br/><br/>
                 <em><span id="shot-feedback-ms"></span></em>
             </p>
-            <button class="btn"></button>
         </div>
 
         <script>
@@ -51,6 +38,8 @@
             document.addEventListener("mouseup", stopShot);
             document.addEventListener("keydown", startShot);
             document.addEventListener("keyup", stopShot);
+            document.addEventListener("touchstart", startShot);
+            document.addEventListener("touchend", stopShot);
 
             function startShot(){
                 document.getElementById("shot-feedback").innerHTML = "...";
