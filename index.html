@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mamba Release</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: Helvetica, Arial, Sans-Serif;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="shotbutton" style="height: 90vh; width: 90vw;margin: auto;">
+            <h3 style="text-align: center;">Kobe Release</h3>
+            <p style="text-align: center;">
+                Try to release at 0.7seconds
+            </p>
+            <img src="mamba.png" style="width:80%; max-width:300px; margin: auto; display: block;">
+            <p style="padding: 20px;text-align: center;">
+                <strong>RELEASE FEEDBACK</strong><br /><br />
+                <span id="shot-feedback" >Press Anywhere</span><br/><br/>
+                <em><span id="shot-feedback-ms"></span></em>
+            </p>
+        </div>
+
+        <script>
+            var ms = 0;
+            var shooting = false;
+
+            document.addEventListener("mousedown", startShot);
+            document.addEventListener("mouseup", stopShot);
+            document.addEventListener("keydown", startShot);
+            document.addEventListener("keyup", stopShot);
+
+            function startShot(){
+                document.getElementById("shot-feedback").innerHTML = "...";
+                shooting = true;
+                shottime = new Date();
+                shottime.setTime(shottime.getTime() - ms);
+            }
+            function stopShot(){
+                releasetime = new Date();
+                ms = releasetime.getTime() - shottime.getTime();
+                releaseType();
+                ms = 0;
+                shooting = false;
+            }
+
+            function releaseType(){
+                if(ms==700){
+                    document.getElementById("shot-feedback").innerHTML = "<span style='color:green'>EXCELLENT</span>";
+                } else if (ms<600){
+                    document.getElementById("shot-feedback").innerHTML = "<span style='color:red'>EARLY</span>";
+                    document.getElementById("shot-feedback-ms").innerHTML = "by " + (700-ms) + "ms";
+                } else if (ms>=600 && ms<700){
+                    document.getElementById("shot-feedback").innerHTML = "<span style='color:blue'>SLIGHTLY EARLY</span>";
+                    document.getElementById("shot-feedback-ms").innerHTML = "by " + (700-ms) + "ms";
+                }  else if (ms>700 && ms<=800){
+                    document.getElementById("shot-feedback").innerHTML = "<span style='color:blue'>SLIGHTLY LATE</span>";
+                    document.getElementById("shot-feedback-ms").innerHTML = "by " + (700-ms) + "ms";
+                } else if (ms>800){
+                    document.getElementById("shot-feedback").innerHTML = "<span style='color:red'>LATE</span>";
+                    document.getElementById("shot-feedback-ms").innerHTML = "by " + (700-ms) + "ms";
+                }
+            }
+        </script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+ 
+    </body>
+</html>
