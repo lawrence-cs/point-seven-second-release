@@ -61,16 +61,16 @@
                     document.getElementById("shot-feedback-ms").innerHTML = "Perfect Release";
                 } else if (ms<600){
                     document.getElementById("shot-feedback").innerHTML = "<span style='color:red'>EARLY</span>";
-                    document.getElementById("shot-feedback-ms").innerHTML = "by " + (700-ms) + "ms";
+                    document.getElementById("shot-feedback-ms").innerHTML = "+" + (700-ms) + "ms";
                 } else if (ms>=600 && ms<700){
                     document.getElementById("shot-feedback").innerHTML = "<span style='color:blue'>SLIGHTLY EARLY</span>";
-                    document.getElementById("shot-feedback-ms").innerHTML = "by " + (700-ms) + "ms";
+                    document.getElementById("shot-feedback-ms").innerHTML = "+" + (700-ms) + "ms";
                 }  else if (ms>700 && ms<=800){
                     document.getElementById("shot-feedback").innerHTML = "<span style='color:blue'>SLIGHTLY LATE</span>";
-                    document.getElementById("shot-feedback-ms").innerHTML = "by " + (700-ms) + "ms";
+                    document.getElementById("shot-feedback-ms").innerHTML = (700-ms) + "ms";
                 } else if (ms>800){
                     document.getElementById("shot-feedback").innerHTML = "<span style='color:red'>LATE</span>";
-                    document.getElementById("shot-feedback-ms").innerHTML = "by " + (700-ms) + "ms";
+                    document.getElementById("shot-feedback-ms").innerHTML = (700-ms) + "ms";
                 }
             }
         </script>
